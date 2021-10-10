@@ -6,7 +6,8 @@ fs.readdir('.', 'utf8', (error, files) => {
 	if (error) throw new Error(error)
 	for (const file of files) {
 		if (file.startsWith('icon')) {
-			let applicationName = file.replace(/icon(\w|\d+)\.png|jpg/g, '')
+			let applicationName = file.slice(4, file.search(/\./))
+			console.log(file)
 			let backgroundColor = args[0] || '#123123'
 			let textLightDark = args[1] || 'dark'
 			let showNameOnOff = args[2] || 'off'
